@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Shopping.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Customers</h2>
+<h4><font color="red"> @TempData["ErrorMessage"]</font></h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+
+
+                @if (item.UserName == "admin")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserName })
+                }
+                else
+                {
+                    if (item.Carts.Count == 0)
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserName })
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+</table>

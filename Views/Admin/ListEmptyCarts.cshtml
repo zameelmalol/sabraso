@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Shopping.Models.Cart>
+
+@{
+    ViewBag.Title = "ListEmptyCarts";
+}
+
+<h2>ListEmptyCarts</h2>
+
+<p>
+    @Html.ActionLink("Delete All", "DeleteAll")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            CartItems
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @item.CartItems.Count
+            </td>
+        </tr>
+    }
+
+</table>

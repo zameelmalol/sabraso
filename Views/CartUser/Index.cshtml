@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Shopping.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>User Carts</h2>
+<h4><font color="red"> @TempData["ErrorMessage"]</font></h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Amount
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @{
+        int total = item.CartItems.Sum(p => (int)p.Quantity * (int)p.Product.Price); ;
+                }
+                @total
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @if (item.Status != "paid" && item.Status != "Shipped")
+                {
+                    <b>|</b>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h1>Sabraso Fruits & Veggies Shopping e-Cart</h1>
+
+<a href="@Url.Action("Index", "Product")"><img src="~/Content/Images/homepage.jpg" width="90%" height="90%" /></a>
+<div class="row">
+    <div class="col-md-4">
+        <h2>About Us</h2>
+        <p>
+            Sabraso Fruits & Veggies Shopping Cart is a website which sells fruits, vegetables, and bakeries and also gives customers the ability to shop
+            (pay) online. It uses an efficient and convenient shopping cart system where users can easily pay for their product purchases.
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("About", "Home")">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Our Partners</h2>
+        <p>Sabraso Fruits & Veggies partners with organizations that share our view to improve online shopping experience.</p>
+        <ul>
+            <li><a href="http://www.amazon.com/">Amazon</a></li>
+            <li><a href="http://www.ebay.com/">E-bay</a></li>
+            <li><a href="http://www.alibaba.com/">Alibaba</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-4">
+        <h2>Administrative Page</h2>
+        <p>Please click the following link if you've administrator privileges.</p>
+        <p><a class="btn btn-default" href="@Url.Action("AdminLinks", "Admin")">Admin &raquo;</a></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-11">
+        <h2 id="nav-tabs">Tabs</h2>
+        <div class="bs-component">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Home</a></li>
+                <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Profile</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="home">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

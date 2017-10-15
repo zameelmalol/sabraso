@@ -1,0 +1,63 @@
+﻿@model Shopping.Models.Cart
+
+@{
+    ViewBag.Title = "Edit";
+    List<string> status = new List<string> { "paid", "Shipped" };
+}
+
+<h2>Edit</h2>
+@if (ViewBag.Status == "unpaid" || ViewBag.Status == "Shipped")
+{
+    <h4><font color="red"> @TempData["ErrorMessage"]</font></h4>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Cart</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerID, "CustomerID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Customer.Name)
+                @Html.HiddenFor(model => model.CustomerID)
+                @Html.ValidationMessageFor(model => model.CustomerID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @if (ViewBag.Status != "unpaid" && ViewBag.Status != "Shipped")
+                {
+                    @Html.DropDownList("status", new SelectList(status))
+                }
+                else
+                {
+                    @Html.DisplayFor(model => model.Status)
+                }
+                @Html.ValidationMessageFor(model => model.Status)
+            </div>
+        </div>
+        @if (ViewBag.Status != "unpaid" && ViewBag.Status != "Shipped")
+        {
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

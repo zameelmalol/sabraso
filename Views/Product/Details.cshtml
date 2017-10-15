@@ -1,0 +1,197 @@
+﻿@model Shopping.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    var imageName = ViewBag.filename + ".jpg";
+
+}
+@*Make Picture Filenames to ID from Database (Optional)*@
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.Name)
+        </dd>
+        <dt>
+            Image
+        </dt>
+        <dd>
+            <img src="~/Content/Images/@imageName" width="30%" height="30%">
+        </dd>
+    </dl>
+</div>
+
+
+
+<table class="table table-striped table-bordered table-hover">
+    <tr>
+        @{
+            if (Model.Name.Equals("Apples"))
+            {
+                <td>
+                    The apple tree (Malus domestica) is a deciduous tree in the rose
+                    family best known for its sweet, pomaceous fruit, the apple.
+                </td>
+            }
+            else if (Model.Name.Equals("Apricot"))
+            {
+                <td>
+                    An apricot is a fruit or the tree that bears the fruit. Usually,
+                    an apricot tree is from the tree species Prunus armeniaca.
+                </td>
+            }
+            else if (Model.Name.Equals("Avocado"))
+            {
+                <td>
+                    The avocado (Persea americana) is a tree native to Mexico and Central America,[1]
+                    classified in the flowering plant family Lauraceae along with cinnamon.
+                </td>
+            }
+            else if (Model.Name.Equals("Bananas"))
+            {
+                <td>
+                    A banana is an edible fruit, botanically a berry,[1][2] produced by several kinds
+                    of large herbaceous flowering plants in the genus Musa.
+                </td>
+            }
+            else if (Model.Name.Equals("Cherries"))
+            {
+                <td>
+                    The cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe (stone
+                    fruit). The cherry fruits of commerce are usually obtained from a limited number of species.
+                </td>
+            }
+            else if (Model.Name.Equals("Kiwifruit"))
+            {
+                <td>
+                    The kiwifruit or Chinese gooseberry (sometimes shortened to kiwi outside New Zealand), is
+                    the edible berry of a woody vine in the genus Actinidia.
+                </td>
+            }
+            else if (Model.Name.Equals("Lemons"))
+            {
+                <td>
+                    The lemon (Citrus × limon) is a small evergreen tree native to Asia. The tree's
+                    ellipsoidal yellow fruit is used for culinary.
+                </td>
+            }
+            else if (Model.Name.Equals("Mangoes"))
+            {
+                <td>
+                    The mango is a juicy stone fruit belonging to the genus Mangifera, consisting of numerous
+                    tropical fruiting trees, cultivated mostly for edible fruit.
+                </td>
+            }
+            else if (Model.Name.Equals("Musk Melon"))
+            {
+                <td>
+                    Muskmelon (Cucumis melo) is a species of melon that has been developed into many cultivated
+                    varieties. These include smooth skinned varieties such as honeydew.
+                </td>
+            }
+            else if (Model.Name.Equals("Oranges"))
+            {
+                <td>
+                    The orange (specifically, the sweet orange) is the fruit of the citrus species Citrus ×
+                    sinensis in the family Rutaceae.
+                </td>
+            }
+            else if (Model.Name.Equals("Peaches"))
+            {
+                <td>
+                    The peach (Prunus persica) is a deciduous tree, native to Northwest China, in the region between
+                    the Tarim Basin and the north slopes of the Kunlun Shan mountains.
+                </td>
+            }
+            else if (Model.Name.Equals("Pears"))
+            {
+                <td>
+                    The pear is any of several tree and shrub species of genus Pyrus /ˈpaɪrəs/, in the family
+                    Rosaceae. It is also the name of the pomaceous fruit of these trees.
+                </td>
+            }
+            else if (Model.Name.Equals("Pineapples"))
+            {
+                <td>
+                    The pineapple (Ananas comosus) is a tropical plant with edible multiple fruit consisting of coalesced
+                    berries,[2][3] and the most economically significant plant.
+                </td>
+            }
+            else if (Model.Name.Equals("Plums"))
+            {
+                <td>
+                    A plum is a fruit of the subgenus Prunus of the genus Prunus. The subgenus is distinguished from
+                    other subgenera (peaches, cherries, bird cherries, etc.).
+                </td>
+            }
+            else if (Model.Name.Equals("Strawberries"))
+            {
+                <td>
+                    The garden strawberry (or simply strawberry /ˈstrɔːbᵊri/; Fragaria × ananassa) is a widely
+                    grown hybrid species of the genus Fragaria.
+                </td>
+            }
+            else if (Model.Name.Equals("Watermelon"))
+            {
+                <td>
+                    Watermelon (Citrullus lanatus var. lanatus, family Cucurbitaceae) is a vine-like (scrambler and trailer)
+                    flowering plant originally from southern Africa.
+                </td>
+            }
+            else if (Model.Name.Equals("Grapes"))
+            {
+                <td>
+                    A grape is a fruiting berry of the deciduous woody vines of the botanical genus Vitis. Grapes can be eaten raw
+                    or they can be used for making jam, juice, jelly.
+                </td>
+            }
+            else
+            {
+                <td>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                    magna aliqua. Ut enim ad minim veniam quis nostrud.
+                </td>
+            }
+        }
+    </tr>
+</table>
+
+<p>
+    @if (@ViewBag.User == "admin")
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })<b> | </b>
+    }
+    @Html.ActionLink("Back to List", "Index")
+</p>

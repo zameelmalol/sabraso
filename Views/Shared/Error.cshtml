@@ -1,0 +1,13 @@
+﻿@model System.Web.Mvc.ExceptionContext
+
+@{
+    ViewBag.Title = "Error";
+}
+<img src="~/Content/Images/error.png" style="opacity: 0.4" />
+<font size="3">
+    <p>An error occurred when we tried to process your request. Rest assured, that we’re already working on the problem and expect to resolve it shortly.</p>
+    <p><strong>We apologize for the inconvenience. Please try again at a later time.</strong></p>
+    <p><a class="btn btn-default" href="@Url.Action("Index", "Home")">Home &raquo;</a></p>
+    <hr />
+    <p><font color="#EF6555">Error: @TempData["ExceptionMessage"]</font></p>
+</font>

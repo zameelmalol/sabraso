@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Shopping.Models.Product>
+
+@{
+    ViewBag.Title = "ProductUsage";
+}
+
+<h2>Reduce Product Price</h2>
+<h4><font color="red"> @TempData["ErrorMessage"]</font></h4>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Usage Count
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        var count = item.CartItems.Count;
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                @count
+            </td>
+            <td>
+                @if (count == 0)
+                {
+                    @Html.ActionLink("Reduce Price", "ReducePrice", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

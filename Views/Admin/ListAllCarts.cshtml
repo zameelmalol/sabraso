@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Shopping.Models.Cart>
+
+@{
+    ViewBag.Title = "ListAllCarts"; var count = 0; var amount = 0;
+}
+
+<h2>ListAllCarts</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.Name)
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            CartItems
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count = item.CartItems.Count();
+        amount = item.CartItems.Sum(x => (int)x.Product.Price * (int)x.Quantity);
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => count)
+            </td>
+        </tr>
+    }
+
+</table>

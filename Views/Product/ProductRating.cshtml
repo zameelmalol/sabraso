@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Shopping.Models.Rating>
+
+@{
+    ViewBag.Title = "ProductRating";
+    double total = ViewBag.Total * 10;
+    double rating = ViewBag.TotalRating;
+    double totalrating = (rating / total) * 100;
+}
+
+<h2>ProductRating</h2>
+<h4><font color="red"> @TempData["ErrorMessage"]</font></h4>
+
+<p><strong>Name:&nbsp;</strong>@ViewBag.ProductName</p>
+<p><strong>Overall Rating:&nbsp;</strong>@totalrating / 100</p>
+
+<table class="table">
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <p>
+                    <strong>@item.Title</strong> (@item.ProductRating out of 10)
+                    <br />
+                    by @item.Customer.UserName
+                </p>
+                <p>@item.Feedback</p>
+            </td>
+            <td>
+                @if (item.Customer.UserName == User.Identity.Name || User.Identity.Name == "admin")
+                {
+                    @Html.ActionLink("Delete", "Delete", "Rating", new { p_id = item.ProductId, c_id = item.CustomerId }, null)
+                }
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Back to List", "Index")

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Shopping.Models.FAQ>
+
+@{
+    ViewBag.Title = "Index";
+    int index = 0;
+}
+<h2>Frequently Asked Questions</h2>
+<h5>To search the Frequently Asked Questions (FAQs), enter your search terms or questions in the box below.</h5>
+
+@if (User.Identity.Name == "admin")
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+
+@using (Html.BeginForm())
+{
+    <p>
+        Name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table table-condensed">
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        index++;
+        <tr>
+            <td>
+                @index. <a style="text-decoration:none" href="@Url.Action("Details", "FAQ", new { id = item.Id })"> @item.Question</a>
+            </td>
+            <td>
+                @if (User.Identity.Name == "admin")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) <b>|</b>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+</table>
